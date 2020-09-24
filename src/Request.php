@@ -46,7 +46,8 @@ class Request
         self::$Client = new \Curl\Curl();
         self::$Client->setOpts([
             CURLOPT_SSL_VERIFYPEER => $verifySSL,
-            CURLOPT_SSL_VERIFYHOST => $verifyHost
+            CURLOPT_SSL_VERIFYHOST => $verifyHost,
+            CURLOPT_CONNECTTIMEOUT => 5,
         ]);
         $response = self::$Client->post("https://".self::$hostname.":".self::$port."/api2/json/access/ticket", array(
             'username'  => self::$username,
