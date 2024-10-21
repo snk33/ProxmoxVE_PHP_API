@@ -48,6 +48,10 @@ class Request
             CURLOPT_SSL_VERIFYPEER => $verifySSL,
             CURLOPT_SSL_VERIFYHOST => $verifyHost,
             CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type:application/json'
+            )
+);
         ]);
         $response = self::$Client->post("https://".self::$hostname.":".self::$port."/api2/json/access/ticket", array(
             'username'  => self::$username,
